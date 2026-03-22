@@ -547,7 +547,7 @@ function renderTextResults(wines, query) {
       ${wines.map((w,i) => {
         const rel = Math.round(w.matchScore / maxScore * 100);
         return `
-        <div class="card text-rec-card p-5 fade-in" style="animation-delay:${i*50}ms">
+        <div class="card text-rec-card p-5 fade-in flex flex-col" style="animation-delay:${i*50}ms">
           <div class="flex items-start justify-between mb-3">
             <div class="flex-1">
               <div class="text-sm font-bold leading-snug">${w.title}</div>
@@ -555,15 +555,17 @@ function renderTextResults(wines, query) {
             </div>
             <div class="flex-shrink-0 ml-3 w-10 h-10 rounded-lg border border-border flex items-center justify-center text-xs font-bold">${rel}%</div>
           </div>
-          <p class="text-xs text-ink-muted font-inter leading-relaxed mb-3">${w.description}</p>
-          <div class="flex items-center gap-4 text-[11px] font-inter text-ink-faint">
-            <span>$${w.price}</span>
-            <span class="font-semibold text-ink">${w.points} pts</span>
-            <span>Hybrid ${w.hybrid.toFixed(3)}</span>
-            <span>via ${w.criticName}</span>
-          </div>
-          <div class="mt-3">
-            <div class="bar-bg"><div class="bar-fill" style="width:${rel}%;background:linear-gradient(90deg,#8b2252,#9c7a4f)"></div></div>
+          <p class="text-xs text-ink-muted font-inter leading-relaxed mb-3 flex-1">${w.description}</p>
+          <div class="mt-auto">
+            <div class="flex items-center gap-4 text-[11px] font-inter text-ink-faint">
+              <span>$${w.price}</span>
+              <span class="font-semibold text-ink">${w.points} pts</span>
+              <span>Hybrid ${w.hybrid.toFixed(3)}</span>
+              <span>via ${w.criticName}</span>
+            </div>
+            <div class="mt-3">
+              <div class="bar-bg"><div class="bar-fill" style="width:${rel}%;background:linear-gradient(90deg,#8b2252,#9c7a4f)"></div></div>
+            </div>
           </div>
         </div>`;
       }).join('')}
